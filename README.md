@@ -13,5 +13,6 @@
 3. Recommended videos from the community.
 4. Global chat room.
 5. Chatbot to resolve your queries.
-6. Syllabus completion tracker.
-7. Ad-free and totally open-source.
+6. Syllabus/progression completion tracker.
+7. Extra materials to make students job-ready(Like tutorials and tips).
+8. Ad-free and totally open-source.
