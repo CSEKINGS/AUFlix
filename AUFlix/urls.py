@@ -1,4 +1,4 @@
-"""AUFlix URL Configuration
+"""AuflixTemp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
@@ -14,8 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include,re_path
+from accounts.views import Accounts
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    re_path(r'^$',Accounts.index,name='index'),
+    re_path(r'^login/',Accounts.login,name='login'),
+    re_path(r'^dashboard/',Accounts.dashboard,name='dashboard'),
+    re_path(r'^admin/', admin.site.urls),
+    re_path(r'^logout/', Accounts.logout, name='logout'),
+    re_path(r'^reset_password/', Accounts.reset_password, name='reset_password'),
 ]
