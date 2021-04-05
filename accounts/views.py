@@ -4,6 +4,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 import pyrebase
 import requests
+import json
 
 firebaseConfig = {
     "apiKey": "AIzaSyB2jAveBDZ6m8YBKEh1iCP2xJLLSeFoYyA",
@@ -33,12 +34,11 @@ class Accounts:
                     user = authe.sign_in_with_email_and_password(email,password)
                     session_id=user['idToken']
                     request.session['uid']=str(session_id)
-                except Exception as e:
-                    print(e)
-                    return HttpResponse("<script>alert('Invalid Credentials!!Please ChecK your Data'); window.location.href = '/login';</script>")
+                except requests.HTTPError as e:
+                    error_json = e.args[1]
+                    return HttpResponse("<script>alert('{}!!Please ChecK your Data'); window.location.href = '/accounts/login';</script>".format(json.loads(error_json)['error']['message']))
                 print(user)
                 return redirect('dashboard')
-                # return render(request,'home.html')
             elif  request.POST.get('submit') == 'signup':
                 email = request.POST.get('email')
                 password = request.POST.get('psword')
@@ -46,30 +46,25 @@ class Accounts:
                 print('{}\n{}\n{}'.format(email,password,name))
                 try:
                     user = authe.create_user_with_email_and_password(email,password)
-                    uid = user['localId']
-                    idtoken = request.session['uid']
-                except requests.exceptions.HTTPError as error:
-                    print(error)
-                    return HttpResponse("<script>alert('Something Went wrong! Please Try again later.'); window.location.href = '/login';</script>")
-                return render(request,'login.html')
+                except requests.HTTPError as e:
+                    error_json = e.args[1]
+                    return HttpResponse("<script>alert('{}!!Please ChecK your Data'); window.location.href = '/accounts/login';</script>".format(json.loads(error_json)['error']['message']))
+                return render(request,'accounts.html')
         return render(request,'accounts.html')
     def logout(request):
         try:
             del request.session['uid']
         except Exception as e:
-            print(e)
             pass
-        return redirect ('/login')
+        return redirect ('/')
     
     def reset_password(request):
         if request.method == 'POST':
             email =  request.POST.get('uname')
-            print(email)
             try:
                 li = authe.send_password_reset_email(email)
-                print(li)
-            except Exception as e:
-                print(e)
-                return HttpResponse("<script>alert('Your email is not registered'); window.location.href = '/login';</script>")
-            return HttpResponse("<script>alert('Your reset link is sended to {}'); window.location.href = '/login';</script>".format(email))
-        return redirect('/login')
+            except requests.HTTPError as e:
+                error_json = e.args[1]
+                return HttpResponse("<script>alert('{}!!. ChecK Your Data'); window.location.href = '/accounts/login';</script>".format(json.loads(error_json)['error']['message']))
+            return HttpResponse("<script>alert('Your reset link is sended to {}'); window.location.href = '/accounts/login';</script>".format(email))
+        return redirect('/accounts/login')
