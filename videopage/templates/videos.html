@@ -2,8 +2,16 @@
 <html>
 
 <head>
-    <title>TESTING</title>
+    <title>Video Page</title>
     {% load static %}
+    {% if not request.session.userid %}
+    <script>alert('U must Login to view your Videos'); 
+    window.location.href = '/accounts/login';
+    </script>
+    <!-- <script>
+        window.location.replace("/login");
+    </script> -->
+    {% endif %}
     <!-- <script type="text/javascript" src="static/js/script.js"></script> -->
     <script src="{% static 'js/vscript.js' %}"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
@@ -26,13 +34,27 @@
     </nav>
     <div class="cont-list">
         <div class="inner-list" id="cardlist">
+            {% for k,v in context %}
+            <div class='vcont' id="{{ k }}">
+                <img src='https://img.icons8.com/metro/26/ffffff/close-window.png'
+                    class='close' onclick='yclose("{{ k }}")' />
+                <div class='tmpl' onclick='playvideo("{{ k }}")'>
+                    <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
+                </div>
+                <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png' class='cont-opt'>
+                <div class='cont-panel' onclick='playvideo("{{ k }}")'>
+                    <h3>{{ v.title }}</h3>
+                    <h4>{{ v.description }}</h4>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <script>
+    <!-- <script>
         $("document").ready(function () {
             videocard();
         });
-    </script>
+    </script> -->
 </body>
 
 </html>

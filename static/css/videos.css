@@ -22,6 +22,7 @@ body {
 
 h4{
     font-weight: normal;
+    color: gray;
 }
 
 h5{
@@ -33,8 +34,8 @@ h5{
 /* Scroll bar */
 
 ::-webkit-scrollbar {
-    width: 0.2rem;
-    height: 0.2rem;
+    width: 0.6rem;
+    height: 0.6rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -111,6 +112,7 @@ nav img:hover{
     transform: scale(0.98);
     overflow: hidden;
     cursor: pointer;
+    color: snow;
     /* transition: all 0.5s; */
 }
 
