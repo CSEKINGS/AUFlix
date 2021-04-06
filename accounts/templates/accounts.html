@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <div id="container" class="login-container">
   <!-- FORM SECTION -->
   <div class="row">
@@ -19,20 +20,24 @@
             <img src="https://img.icons8.com/nolan/128/user-male-circle.png" />
             <h1>SIGN UP</h1>
             <div class="input-group">
-              <i class='bx bxs-user'></i>
-              <input type="text" placeholder="Name" name="name">
+              <i class='fas fa-user'></i>
+              <input type="text" placeholder="Name" name="name" required>
             </div>
             <div class="input-group">
-              <i class='bx bx-mail-send'></i>
-              <input type="email" placeholder="Email" name="email">
+              <i class="fas fa-stream"></i>
+              <input type="text" placeholder="Department (Optional)" name="department" >
             </div>
             <div class="input-group">
-              <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Password" name="psword" id="password">
+              <i class='fas fa-envelope'></i>
+              <input type="email" placeholder="Email" name="email" required>
             </div>
             <div class="input-group">
-              <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Confirm password" name="confirm" id="confirm_password">
+              <i class='fas fa-key'></i>
+              <input type="password" placeholder="Password" name="psword" id="password" required>
+            </div>
+            <div class="input-group">
+              <i class='fas fa-key'></i>
+              <input type="password" placeholder="Confirm password" name="confirm" id="confirm_password" required>
               <!-- <img id="message" src="https://img.icons8.com/plasticine/64/000000/good-quality.png"> -->
             </div>
             <button type="submit" name="submit" value="signup">
@@ -62,12 +67,12 @@
             <img src="https://img.icons8.com/nolan/128/user-male-circle.png" />
             <h1>SIGN IN</h1>
             <div class="input-group">
-              <i class='bx bxs-user'></i>
+              <i class='fas fa-user'></i>
               <input type="text" placeholder="Email" name="uname" required>
             </div>
             <div class="input-group">
-              <i class='bx bxs-lock-alt'></i>
-              <input type="password" placeholder="Password" name="psword">
+              <i class='fas fa-key'></i>
+              <input type="password" placeholder="Password" name="psword" required>
             </div>
             <button type="submit" name="submit" value="signin">
               Sign in

@@ -81,7 +81,9 @@
   
   .input-group input {
     width: 100%;
-    padding: 1rem 3rem;
+    /* padding: 1rem 3rem; */
+    text-align: center;
+    padding: .5rem;
     font-size: 1rem;
     /* background-color: var(--gray); */
     border-radius: .5rem;
@@ -279,8 +281,12 @@
   }
   
   /* RESPONSIVE */
-  
-  @media only screen and (max-width: 425px) {
+  @media only screen and (max-width: 320px) {
+    .input-group i {
+display: none;
+    }
+  }
+  @media only screen  and (max-width: 606px) {
   
     .login-container::before,
     .login-container.sign-in::before,
@@ -294,9 +300,9 @@
     }
     
   
-    .input-group i {
+    /* .input-group i {
       left: 1.5rem;
-    }
+    } */
     button[type='submit']{
       width: 90%;
       justify-content:center
@@ -372,3 +378,5 @@
         font-size: 2rem;
     }
   }
+
+  

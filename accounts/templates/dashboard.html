@@ -1,9 +1,9 @@
 {% extends 'index.html' %}
 {% block content %}
 {% load static %}
-{% if request.session.uid %}
-<h1>Welcome {{request.session.uid}} </h1>
-<button><a href='{% url "logout" %}'>logout</a></button>
+{% if request.session.userid %}
+<h1>Welcome {{request.session.name}} </h1>
+<a class='btn btn-primary' href='{% url "logout" %}'>logout</a>
 {% else %}
 <script>alert('U must Login to view your dashboard'); 
 window.location.href = '/accounts/login';
