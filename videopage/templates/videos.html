@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TESTING</title>
+    {% load static %}
+    <!-- <script type="text/javascript" src="static/js/script.js"></script> -->
+    <script src="{% static 'js/vscript.js' %}"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link rel='stylesheet' type='text/css' href='style.css'> -->
+    <link rel="stylesheet" href="{% static 'css/videos.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <nav>
+        <img id="home" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
+            src="https://img.icons8.com/office/50/000000/home--v2.png" />
+        <img id="search" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
+            src="https://img.icons8.com/officel/50/000000/search--v2.png" />
+        <img id="book" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
+            src="https://img.icons8.com/color/50/000000/open-book--v2.png" />
+        <img id="chat" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
+            src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" />
+    </nav>
+    <div class="cont-list">
+        <div class="inner-list" id="cardlist">
+        </div>
+    </div>
+    <script>
+        $("document").ready(function () {
+            videocard();
+        });
+    </script>
+</body>
+
+</html>

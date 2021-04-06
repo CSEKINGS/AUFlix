@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include,re_path
-from accounts.views import Accounts
-from accounts import urls
+from .views import Videopage
 
 urlpatterns = [
-    re_path(r'^$',Accounts.index,name='index'),
-    re_path(r'^accounts/',include("accounts.urls")),
-    re_path(r'^videopage/',include("videopage.urls"))
+    # login stuff
+    re_path(r'^videos/',Videopage.videos,name='videos')
 ]
