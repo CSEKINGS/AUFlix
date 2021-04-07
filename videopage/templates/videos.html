@@ -5,8 +5,8 @@
     <title>Video Page</title>
     {% load static %}
     {% if not request.session.userid %}
-    <script>alert('U must Login to view your Videos'); 
-    window.location.href = '/accounts/login';
+    <script>alert('U must Login to view your Videos');
+        window.location.href = '/accounts/login';
     </script>
     <!-- <script>
         window.location.replace("/login");
@@ -33,28 +33,73 @@
             src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" />
     </nav>
     <div class="cont-list">
-        <div class="inner-list" id="cardlist">
-            {% for k,v in context %}
-            <div class='vcont' id="{{ k }}">
-                <img src='https://img.icons8.com/metro/26/ffffff/close-window.png'
-                    class='close' onclick='yclose("{{ k }}")' />
-                <div class='tmpl' onclick='playvideo("{{ k }}")'>
-                    <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
-                </div>
-                <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png' class='cont-opt'>
-                <div class='cont-panel' onclick='playvideo("{{ k }}")'>
-                    <h3>{{ v.title }}</h3>
-                    <h4>{{ v.description }}</h4>
+        <div class="outer-list">
+            <div class="vltitle">Title</div>
+            <div class="out-list">
+                <div class="inner-list" id="cardlist">
+                    {% for k,v in context %}
+                    <div class='vcont' id="{{ k }}">
+                        <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
+                            onclick='yclose("{{ k }}")' />
+                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
+                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
+                        </div>
+                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
+                            class='cont-opt'>
+                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
+                            <div class="t">{{ v.title }}</div>
+                            <div class="d">{{ v.description }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
+        </div>
+        <div class="outer-list">
+            <div class="vltitle">Title</div>
+            <div class="out-list">
+                <div class="inner-list" id="cardlist">
+                    {% for k,v in context %}
+                    <div class='vcont' id="{{ k }}">
+                        <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
+                            onclick='yclose("{{ k }}")' />
+                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
+                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
+                        </div>
+                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
+                            class='cont-opt'>
+                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
+                            <div class="t">{{ v.title }}</div>
+                            <div class="d">{{ v.description }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="outer-list">
+            <div class="vltitle">Title</div>
+            <div class="out-list">
+                <div class="inner-list" id="cardlist">
+                    {% for k,v in context %}
+                    <div class='vcont' id="{{ k }}">
+                        <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
+                            onclick='yclose("{{ k }}")' />
+                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
+                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
+                        </div>
+                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
+                            class='cont-opt'>
+                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
+                            <div class="t">{{ v.title }}</div>
+                            <div class="d">{{ v.description }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
-    <!-- <script>
-        $("document").ready(function () {
-            videocard();
-        });
-    </script> -->
 </body>
 
 </html>

@@ -20,15 +20,9 @@ body {
     font-family:Sans-serif;
 }
 
-h4{
+.d{
     font-weight: normal;
     color: gray;
-}
-
-h5{
-    color: gray;
-    font-weight: normal;
-    text-align: right;
 }
 
 /* Scroll bar */
@@ -86,27 +80,40 @@ nav img:hover{
 /* card list */
 
 .cont-list{
-    width: 85%;
-    height: 90vh;
+    max-width: 85%;
+    max-height: 95vh;
     margin: auto;
-    overflow-x: auto;
+    align-self: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.outter-list{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.out-list{
+    max-width: 100%;
+    height: fit-content;
     overflow-y: hidden;
-    margin-top: 3rem;
+    overflow-x: auto;
 }
 
 .inner-list{
-    margin-top: 1rem;
     width: max-content;
-    max-width: 150%;
-    max-height: 100%;
+    height: fit-content;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* margin-top: 3rem; */
 }
 
 .vcont{
     float: left;
     background:#2a2e35;
     box-shadow: 0px 0px 3px 0px rgba(255, 250, 250, 0.5);
-    width: 15rem;
-    height: 18rem;
+    width: 17vw;
+    height: 30vh;
     margin: 2rem;
     border-radius: 15px;
     transform: scale(0.98);
@@ -114,6 +121,16 @@ nav img:hover{
     cursor: pointer;
     color: snow;
     /* transition: all 0.5s; */
+}
+
+.vltitle{
+    position: relative;
+    margin: auto;
+    left: 0.5rem;
+    top: 0.5rem;
+    color: snow;
+    font-size: large;
+    font-weight: bold;
 }
 
 .vcont:hover{
@@ -126,8 +143,8 @@ nav img:hover{
 /* Template */
 
 .tmpl{
-    width: 15rem;
-    height: 9rem;
+    width: 100%;
+    height: 20vh;
     background: black;
 }
 
@@ -140,9 +157,15 @@ nav img:hover{
 /* content panel */
 
 .cont-panel{
-    width: 14rem;
-    height: 8rem;
+    width: 100%;
+    height: 10vh;
     padding: 0.5rem;
+}
+
+.cont-panel .t, .cont-panel .d{
+    font-size: medium;
+    padding: 0.5vh;
+    word-wrap: break-word;
 }
 
 .cont-opt{
@@ -152,16 +175,16 @@ nav img:hover{
 
 .vcont .cont-opt{
     position: absolute;
-    height: 1rem;
-    width: 1rem;
+    height: 2vh;
+    width: 2vh;
     padding: 0.5rem;
     background: snow;
     box-shadow: 0px 0px 10px 0px black;
     border-radius: 100%;
     margin: auto;
     left: auto;
-    right: 0.2rem;
-    top: 9.2rem;
+    right: 0.2vh;
+    top: 18vh;
     cursor: pointer;
 }
 
@@ -194,9 +217,9 @@ nav img:hover{
     border-radius: 100%;
     margin: auto;
     left:auto;
-    right: 17%;
+    right: 18vw;
     top: auto;
-    bottom: 8%;
+    bottom: 8vh;
     cursor: pointer;
 }
 
@@ -206,8 +229,8 @@ nav img:hover{
 
 .fulscrn .tmpl{
     margin: auto;
-    width:80%;
-    height: 85%;
+    min-width:80vw;
+    min-height: 85vh;
 }
 
 .fulscrn .tmpl iframe{
@@ -238,7 +261,7 @@ nav img:hover{
         justify-content: center;
         position: fixed;
         padding: 0rem;
-        margin-bottom: 2.5rem;
+        margin-bottom: 5vh;
         background: #2a2e35;
         box-shadow: 0px 0px 3px 0px #12181b;
         border: none;
@@ -250,49 +273,59 @@ nav img:hover{
         /* box-shadow: 0px 0px 3px 0px #12181b; */
         margin: 0rem;
     }
+    ::-webkit-scrollbar {
+        width: 0.2rem;
+        height: 0.2rem;
+    }
     .cont-list{
-        width: 100%;
-        max-height:90vh;
+        min-width: 100%;
+        height:100%;
         overflow-y: auto;
     }
     .inner-list{
         margin: 0rem;
-        width: 100%;
-        height: 80%;
-        display: flex;
-        flex-direction: column;
+        width: max-content;
+        height: fit-content;
+        /* display: flex; */
+        /* flex-direction: column; */
         align-items: center;
     }
     .vcont{
         display: block;
-        min-width: 19rem;
-        min-height: 16rem;
-        margin: auto;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        min-width: 45vw;
+        height: 25vh;
+        margin: 0.5rem; 
         transform: scale(1);
     }
     .vcont:hover{
         transform: translateY(-1%);
     }
     .tmpl{
-        width: 19rem;
-        height: 10rem;
+        width: 100%;
+        height: 14vh;
         background: black;
     }
     .fulscrn{
         flex-direction: column;
-        width: 99%;
+        width: 100vw;
+        height: 95vh;
     }
     .fulscrn .tmpl{
         width: 100%;
+        min-height: 50vh;
     }
     .cont-panel{
         width: 100%;
     }
+    .vcont .cont-opt{
+        top: 14.5vh;
+    }
+    .cont-panel .t, .cont-panel .d{
+        font-size: smaller;
+    }
     .fulscrn .cont-opt{
-        top: 0%;
-        left: 90%;
+        top: 0vh;
+        left: 90vw;
     }
     .close{
         display: none;
