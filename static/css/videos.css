@@ -157,7 +157,7 @@ nav img:hover{
 /* content panel */
 
 .cont-panel{
-    width: 100%;
+    max-width: 100%;
     height: 10vh;
     padding: 0.5rem;
 }

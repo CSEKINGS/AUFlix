@@ -19,5 +19,6 @@ from .views import Videopage
 
 urlpatterns = [
     # login stuff
-    re_path(r'^videos/',Videopage.videos,name='videos')
+    re_path(r'^videos/',Videopage.videos,name='videos'),
+    re_path(r'^scrap/',Videopage.scrap,name='scrap')
 ]

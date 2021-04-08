@@ -8,9 +8,6 @@
     <script>alert('U must Login to view your Videos');
         window.location.href = '/accounts/login';
     </script>
-    <!-- <script>
-        window.location.replace("/login");
-    </script> -->
     {% endif %}
     <!-- <script type="text/javascript" src="static/js/script.js"></script> -->
     <script src="{% static 'js/vscript.js' %}"></script>
@@ -33,72 +30,32 @@
             src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" />
     </nav>
     <div class="cont-list">
+        {% for k,v in context %}
         <div class="outer-list">
-            <div class="vltitle">Title</div>
+            <div class="vltitle">{{ k }}</div>
             <div class="out-list">
                 <div class="inner-list" id="cardlist">
-                    {% for k,v in context %}
-                    <div class='vcont' id="{{ k }}">
+                    {% for k1,v1 in v.items %}
+                    {% if k1 not in 'keys' %}
+                    <div class='vcont' id="{{ k1 }}">
                         <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
-                            onclick='yclose("{{ k }}")' />
-                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
-                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
+                            onclick='yclose("{{ k1 }}")' />
+                        <div class='tmpl' onclick='playvideo("{{ k1 }}")'>
+                            <img src='https://i.ytimg.com/vi/{{ k1 }}/maxresdefault.jpg'>
                         </div>
                         <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
                             class='cont-opt'>
-                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
-                            <div class="t">{{ v.title }}</div>
-                            <div class="d">{{ v.description }}</div>
+                        <div class='cont-panel' onclick='playvideo("{{ k1 }}")'>
+                            <div class="t">{{ v1.title }}</div>
+                            <div class="d">{{ v1.description }}</div>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="outer-list">
-            <div class="vltitle">Title</div>
-            <div class="out-list">
-                <div class="inner-list" id="cardlist">
-                    {% for k,v in context %}
-                    <div class='vcont' id="{{ k }}">
-                        <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
-                            onclick='yclose("{{ k }}")' />
-                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
-                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
-                        </div>
-                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
-                            class='cont-opt'>
-                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
-                            <div class="t">{{ v.title }}</div>
-                            <div class="d">{{ v.description }}</div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <div class="outer-list">
-            <div class="vltitle">Title</div>
-            <div class="out-list">
-                <div class="inner-list" id="cardlist">
-                    {% for k,v in context %}
-                    <div class='vcont' id="{{ k }}">
-                        <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
-                            onclick='yclose("{{ k }}")' />
-                        <div class='tmpl' onclick='playvideo("{{ k }}")'>
-                            <img src='https://i.ytimg.com/vi/{{ k }}/maxresdefault.jpg'>
-                        </div>
-                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
-                            class='cont-opt'>
-                        <div class='cont-panel' onclick='playvideo("{{ k }}")'>
-                            <div class="t">{{ v.title }}</div>
-                            <div class="d">{{ v.description }}</div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </body>
 
