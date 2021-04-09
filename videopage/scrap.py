@@ -3,6 +3,8 @@ import pprint
 import pyrebase
 import json
 import nltk
+import requests
+import re
 import numpy as np
 from urllib.parse import parse_qs, urlparse
 from collections import defaultdict
