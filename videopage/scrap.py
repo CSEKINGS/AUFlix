@@ -11,6 +11,7 @@ from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
+
 class AUSCRAPER:
     def __init__(self):
         # nltk.download()
@@ -25,7 +26,7 @@ class AUSCRAPER:
         }
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()  # DB initialization
-        self.urls = [
+        self.vurls = [
             "PLOgMKE5DWMGI2aI6Vur33LxVuoL0Aun0k",
             "PLOgMKE5DWMGK6bfWjEHg97E1x3fJramhJ",
             "PLOgMKE5DWMGIBRctaUdXgwORzqqdloiHt",
@@ -56,11 +57,21 @@ class AUSCRAPER:
             "PLOgMKE5DWMGKy1uomFjd9__LnVj-DFbWm",
             "PLOgMKE5DWMGKhi0RYaiCTwOYaCh20iNZZ",
         ]
+        self.nurls = urls = [
+            "https://padeepz.net/civil-engineering-syllabus-notes-important-questions-and-question-bank/",
+            "https://padeepz.net/anna-university-mechanical-engineering-syllabus-notes-important-questions-and-question-bank/",
+            "https://padeepz.net/anna-university-electrical-and-electronics-engineering-eee-syllabus-notes-important-questions-and-question-bank/",
+            "https://padeepz.net/anna-university-electronics-and-communication-engineering-ece-syllabus-notes-important-questions-and-question-bank/",
+            "https://padeepz.net/anna-university-computer-science-and-engineering-cse-syllabus-notes-important-questions-and-question-bank/",
+        ]
         self.d = defaultdict(dict)
 
     def Yscrap(self):  # Extract playlist id from url
-        for url in self.urls:
-            query = parse_qs(urlparse("https://www.youtube.com/playlist?list="+url).query, keep_blank_values=True)
+        for url in self.vurls:
+            query = parse_qs(
+                urlparse("https://www.youtube.com/playlist?list=" + url).query,
+                keep_blank_values=True,
+            )
             playlist_id = query["list"][0]
             # print(f'get all playlist items links from {playlist_id}')
             youtube = googleapiclient.discovery.build(
@@ -84,10 +95,10 @@ class AUSCRAPER:
                     "description": p["snippet"]["description"],
                     "publishat": p["snippet"]["publishedAt"],
                 }
-        self.d=self.tagger(self.d)
+        self.d = self.tagger(self.d)
         # pprint.pprint(self.d)
         # self.d['date']=int(datetime.now().strftime('%j'))
-        self.db.child("videos").set(self.d) # Set to the firebase db
+        self.db.child("videos").set(self.d)  # Set to the firebase db
 
     def tagger(self, d):
         for k in d.keys():
@@ -112,6 +123,49 @@ class AUSCRAPER:
             else:
                 keys.append(ps.stem(word))
         return list(set(sw)), list(set(keys))
+
+    def Nscrap(self):
+        d = defaultdict(dict)
+        reg = r"^https://padeepz.(net|com)/.*notes.*"
+        for url in self.nurls:
+            for ptag in BeautifulSoup(requests.get(url).content, "html5lib").findAll(
+                "p"
+            ):
+                for link in ptag.findAll("a", href=re.compile(reg)):
+                    d[url.replace("https://padeepz.net/", "").replace("/", "")][
+                        link["href"]
+                        .replace("https://padeepz.net/", "")
+                        .replace("/", "")
+                    ] = []
+                    for ptag1 in BeautifulSoup(
+                        requests.get(link["href"]).content, "html5lib"
+                    ).findAll("p"):
+                        for link1 in ptag1.findAll("a", href=re.compile(reg)):
+                            for dlink in BeautifulSoup(
+                                requests.get(link1["href"]).content, "html5lib"
+                            ).findAll("a", href=re.compile(r"^https://drive.*")):
+                                d[
+                                    url.replace("https://padeepz.net/", "").replace(
+                                        "/", ""
+                                    )
+                                ][
+                                    link["href"]
+                                    .replace("https://padeepz.net/", "")
+                                    .replace("/", "")
+                                ].append(
+                                    [
+                                        link1["href"]
+                                        .replace("https://padeepz.net/", "")
+                                        .replace("/", ""),
+                                        dlink["href"],
+                                        self.keygen(
+                                            link["href"]
+                                            .replace("https://padeepz.net/", "")
+                                            .replace("/", "")
+                                        )[-1],
+                                    ]
+                                )
+        self.db.child("notes").set(d)
 
     # def matcher(self,str1,str2):
     #         size_x=len(str1)+1

@@ -28,5 +28,6 @@ class Videopage:
         print(abs(int(datetime.now().strftime('%j'))-int(AS.db.child('vdate').get().val())))
         if abs(int(datetime.now().strftime('%j'))-int(AS.db.child('vdate').get().val())) >= 7 :
             AS.Yscrap()
+            AS.Nscrap()
             AS.db.child('vdate').set(int(datetime.now().strftime('%j')))
         return redirect('videos')
