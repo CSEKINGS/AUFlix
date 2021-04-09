@@ -127,7 +127,7 @@ class AUSCRAPER:
                 keys.append(ps.stem(word))
         return list(set(sw)), list(set(keys))
 
-    def Nscrap(self):
+    def Nscrap(self): # Notes link scrapper
         d = defaultdict(dict)
         reg = r"^https://padeepz.(net|com)/.*notes.*"
         for url in self.nurls:
