@@ -1,5 +1,7 @@
 appdirs==1.4.4
 asgiref==3.3.2
+beautifulsoup4==4.9.3
+bs4==0.0.1
 cachetools==4.2.1
 certifi==2020.12.5
 chardet==4.0.0
@@ -34,6 +36,7 @@ requests==2.11.1
 requests-toolbelt==0.7.0
 rsa==4.7.2
 six==1.15.0
+soupsieve==2.2.1
 sqlparse==0.4.1
 toml==0.10.2
 tqdm==4.60.0

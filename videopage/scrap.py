@@ -1,15 +1,16 @@
 import googleapiclient.discovery
-from urllib.parse import parse_qs, urlparse
 import pprint
 import pyrebase
-from collections import defaultdict
 import json
 import nltk
 import numpy as np
+from urllib.parse import parse_qs, urlparse
+from collections import defaultdict
 from datetime import datetime
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
+from bs4 import BeautifulSoup
 
 
 class AUSCRAPER:
