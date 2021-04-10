@@ -25,7 +25,7 @@ function gout(id) {
 function searchBox(id){
     sc=document.getElementById("searchbox");
     if(sc.className == "searchbox"){
-        sc.className="hide"
+        sc.className="hide";
     }else{
         sc.className="searchbox";
     }
