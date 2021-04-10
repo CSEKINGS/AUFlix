@@ -21,6 +21,7 @@ body {
 }
 
 .d{
+    display: none;
     font-weight: normal;
     color: gray;
 }
@@ -88,9 +89,10 @@ nav img:hover{
     overflow-y: scroll;
 }
 
-.outter-list{
+.outer-list{
     max-width: 100%;
     max-height: 100%;
+    margin-bottom: 5vh;
 }
 
 .out-list{
@@ -123,6 +125,14 @@ nav img:hover{
     /* transition: all 0.5s; */
 }
 
+lkey{
+    font-size: small;
+    align-items: flex-end;
+}
+key{
+    display: none;
+}
+
 .vltitle{
     position: relative;
     margin: auto;
@@ -138,6 +148,16 @@ nav img:hover{
     transform: translateY(-5%) scale(1);
     /* box-shadow: 0px 0px 3px 0px #5DADE2; */
     box-shadow: 0px 4px 3px 0px rgba(255, 250, 250, 0.5);
+}
+
+span{
+    color: green;
+    border: solid 1px green;
+    border-radius: 0.3rem;
+    padding: 0.1rem;
+    margin: 0.1rem;
+    line-height: 1.5rem;
+    width: fit-content;
 }
 
 /* Template */
@@ -223,6 +243,10 @@ nav img:hover{
     cursor: pointer;
 }
 
+.fulscrn .d{
+    display: block;
+}
+
 .cont-opt:hover{
     transform: scale(1);
 }
@@ -248,6 +272,60 @@ nav img:hover{
     margin: auto;
     left: 97%;
     top:-47%;
+}
+
+/* search box */
+
+.searchbox{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 4rem;
+    height: 97.5vh;
+    width: 0vw;
+    background:#2a2e35;
+    z-index: 200;
+    padding: 0rem;
+    overflow:hidden;
+    transition: all 0.5s;
+}
+
+.tag-list{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.tags{
+    display: block;
+    margin: 0.5rem;
+    padding: 0.3rem;
+    /* border: solid 1px #12181b; */
+    border-radius: 0.5rem;
+}
+
+.tag-title{
+    color: snow;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.search{
+    position: relative;
+    margin: auto;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    font-size: medium;
+    text-align: center;
+    color: snow;
+    height: 2rem;
+    width: 28vw;
+    background-color: #12181b;
+    align-self: center;
 }
 
 @media only screen and (max-width: 426px) {

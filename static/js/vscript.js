@@ -21,3 +21,35 @@ function gout(id) {
     var val = document.getElementById(id).src;
     document.getElementById(id).src = val.replace(".gif", ".png")
 }
+
+function searchBox(id){
+    sc=document.getElementById("searchbox");
+    if(sc.style.width == "30vw"){
+        sc.style.width="0vw";
+        sc.style.padding="0rem";
+    }else{
+        sc.style.width="30vw";
+        sc.style.padding="0.5rem";
+    }
+}
+
+function searchKey() {
+    showlist = []
+    outlist = document.getElementsByClassName('outer-list');
+    key = document.getElementById("searchkey").value.split(" ")
+    for (var j = 0; j < outlist.length; j++) {
+        vcont = outlist[j].getElementsByClassName('vcont');
+        lkey=document.getElementsByClassName('tags');
+        for (var k = 0; k < key.length; k++) {
+            outlist[j].style.display = "none";
+            lkey[j].style.display="none";
+            for (var i = 0; i < vcont.length; i++) {
+                if (vcont[i].getElementsByTagName('key')[0].innerText.indexOf(key[k]) > -1) {
+                    vcont[i].style.display = "";
+                    outlist[j].style.display = "";
+                    lkey[j].style.display="";
+                }
+            }
+        }
+    }
+}

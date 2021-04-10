@@ -23,28 +23,50 @@
         <img id="home" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
             src="https://img.icons8.com/office/50/000000/home--v2.png" />
         <img id="search" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
-            src="https://img.icons8.com/officel/50/000000/search--v2.png" />
+            src="https://img.icons8.com/officel/50/000000/search--v2.png" onclick='searchBox(this.id)' />
         <img id="book" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
             src="https://img.icons8.com/color/50/000000/open-book--v2.png" />
         <img id="chat" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
             src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" />
     </nav>
+    <div class="searchbox" id="searchbox">
+        <input type="text" class="search" id="searchkey" onkeyup="searchKey();">
+        <div class="tag-list">
+            {% for k,v in videos %}
+            <div class="tags">
+                <div class="tag-title">{{ v.title }}</div>
+                <lkey>
+                    {% for t in v.keys %}
+                    <span>{{ t }}</span>
+                    {% endfor %}
+                </lkey>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     <div class="cont-list">
-        {% for k,v in context %}
+        {% for k,v in videos %}
         <div class="outer-list">
-            <div class="vltitle">{{ k }}</div>
+            <div class="vltitle">{{ v.title }}
+                <!-- <lkey>
+                    {% for t in v.keys %}
+                    <span>{{ t }}</span>
+                    {% endfor %}
+                </lkey> -->
+            </div>
             <div class="out-list">
                 <div class="inner-list" id="cardlist">
                     {% for k1,v1 in v.items %}
-                    {% if k1 not in 'keys' %}
+                    {% if k1 not in 'keys' and k1 not in 'title' %}
                     <div class='vcont' id="{{ k1 }}">
+                        <key>{{ v1.keys }}</key>
                         <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
                             onclick='yclose("{{ k1 }}")' />
                         <div class='tmpl' onclick='playvideo("{{ k1 }}")'>
                             <img src='https://i.ytimg.com/vi/{{ k1 }}/maxresdefault.jpg'>
                         </div>
-                        <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
-                            class='cont-opt'>
+                        <!-- <img src='https://img.icons8.com/material-sharp/24/000000/dots-loading--v3.png'
+                            class='cont-opt'> -->
                         <div class='cont-panel' onclick='playvideo("{{ k1 }}")'>
                             <div class="t">{{ v1.title }}</div>
                             <div class="d">{{ v1.description }}</div>

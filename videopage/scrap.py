@@ -98,34 +98,33 @@ class AUSCRAPER:
                     "description": p["snippet"]["description"],
                     "publishat": p["snippet"]["publishedAt"],
                 }
-        self.d = self.tagger(self.d)
-        # pprint.pprint(self.d)
-        # self.d['date']=int(datetime.now().strftime('%j'))
-        self.db.child("videos").set(self.d)  # Set to the firebase db
+        self.db.child("videos").set(self.tagger(self.d))  # Set to the firebase db
 
     def tagger(self, d):
         for k in d.keys():
             keys = []
             for k2 in d[k].keys():
-                d[k][k2]["stopwords"], d[k][k2]["keys"] = self.keygen(
+                d[k][k2]["keys"] = self.keygen(
                     " ".join([d[k][k2]["title"], d[k][k2]["description"]])
                 )
-                for kw in d[k][k2]["keys"]:
-                    keys.append(kw)
+                d[k][k2]["keys"]=[ky for ky in list(set(d[k][k2]["keys"])) if not ky.isdigit()]
+                for kw in d[k][k2]["keys"]:keys.append(kw)
+            d[k]['title']=d[k][k2]["description"]
             d[k]["keys"] = list(set(keys))
         return d
 
     def keygen(self, wl):
         keys = []
-        sw = []
-        ps = PorterStemmer()
-        stopWord = set(stopwords.words("english"))
+        # ps = PorterStemmer()
+        stopWord = list(set(stopwords.words("english")))
+        stopWord.append('tutor')
+        stopWord.append('video')
+        stopWord.append('test')
+        stopWord.append('pratical')
+        stopWord.append('example')
         for word in RegexpTokenizer(r"\w+").tokenize(wl.lower()):
-            if word in stopWord:
-                sw.append(word)
-            else:
-                keys.append(ps.stem(word))
-        return list(set(sw)), list(set(keys))
+            if word not in stopWord:keys.append(word)
+        return keys
 
     def Nscrap(self): # Notes link scrapper
         d = defaultdict(dict)
@@ -165,7 +164,7 @@ class AUSCRAPER:
                                             link["href"]
                                             .replace("https://padeepz.net/", "")
                                             .replace("/", "")
-                                        )[-1],
+                                        ),
                                     ]
                                 )
         self.db.child("notes").set(d)
