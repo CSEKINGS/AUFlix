@@ -24,12 +24,10 @@ function gout(id) {
 
 function searchBox(id){
     sc=document.getElementById("searchbox");
-    if(sc.style.width == "30vw"){
-        sc.style.width="0vw";
-        sc.style.padding="0rem";
+    if(sc.className == "searchbox"){
+        sc.className="hide"
     }else{
-        sc.style.width="30vw";
-        sc.style.padding="0.5rem";
+        sc.className="searchbox";
     }
 }
 

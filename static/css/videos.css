@@ -276,6 +276,19 @@ span{
 
 /* search box */
 
+.hide{
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 4rem;
+    width: 0vw;
+    padding: 0rem;
+    height: 97.5vh;
+    overflow: hidden;
+    z-index: 60;
+    transition: all 0.5s;
+}
+
 .searchbox{
     display: flex;
     flex-direction: column;
@@ -283,10 +296,10 @@ span{
     top: 0%;
     left: 4rem;
     height: 97.5vh;
-    width: 0vw;
+    width: 30vw;
     background:#2a2e35;
-    z-index: 200;
-    padding: 0rem;
+    z-index: 60;
+    padding: 0.5rem;
     overflow:hidden;
     transition: all 0.5s;
 }
@@ -411,5 +424,18 @@ span{
         margin: auto;
         left: 45%;
         top:1%;
+    }
+    .hide{
+        top: 0vw;
+        left: 0rem;
+        height: 85vh;
+    }
+    .searchbox{
+        width: 95%;
+        height: 85vh;
+        left: 0rem;
+    }
+    .search{
+        width: 95%;
     }
 }
