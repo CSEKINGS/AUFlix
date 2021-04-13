@@ -4,7 +4,8 @@
 
 1. Clone the repo: ``git clone https://github.com/CSEKINGS/AUFlix.git``
 2. Switch to working directory ``cd AUFlix``
-3. Execute in terminal ``python manage.py runserver``
+3. Run ``pip install -r requirements.txt``
+4. Execute in terminal ``python manage.py runserver``
 
 ## Features:
 
