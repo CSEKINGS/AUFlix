@@ -13,7 +13,7 @@ from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 from bs4 import BeautifulSoup
-
+nltk.download('stopwords')
 
 class AUSCRAPER:
     def __init__(self):
@@ -159,7 +159,7 @@ class AUSCRAPER:
                                         link1["href"]
                                         .replace("https://padeepz.net/", "")
                                         .replace("/", ""),
-                                        dlink["href"],
+                                        dlink["href"].replace("https://drive.google.com/open?id=",""),
                                         self.keygen(
                                             link["href"]
                                             .replace("https://padeepz.net/", "")
@@ -180,3 +180,55 @@ class AUSCRAPER:
     #                 if str1[x-1]==str2[y-1]:m[x,y]=m[x-1,y-1]
     #                 else:m[x,y]=min(m[x-1,y]+1,m[x-1,y-1],m[x,y-1]+1)
     #         return 1-(m[size_x-1,size_y-1]/size_x)
+
+# requests==2.11.1
+# Pyrebase==3.0.27
+# google-api-core==1.26.3
+# appdirs==1.4.4
+# asgiref==3.3.2
+# beautifulsoup4==4.9.3
+# bs4==0.0.1
+# cachetools==4.2.1
+# certifi==2020.12.5
+# chardet==4.0.0
+# click==7.1.2
+# Django==3.2
+# gcloud==0.17.0
+# google-api-core
+# google-api-python-client==2.1.0
+# google-auth==1.28.0
+# google-auth-httplib2==0.1.0
+# googleapis-common-protos==1.53.0
+# html5lib==1.1
+# httplib2==0.19.1
+# idna==2.10
+# joblib==1.0.1
+# jws==0.1.3
+# mypy-extensions==0.4.3
+# nltk==3.6.1
+# numpy==1.20.2
+# oauth2client==3.0.0
+# packaging==20.9
+# pathspec==0.8.1
+# protobuf==3.15.7
+# pyasn1==0.4.8
+# pyasn1-modules==0.2.8
+# pycryptodome==3.4.3
+# pyparsing==2.4.7
+# Pyrebase
+# python-jwt==2.0.1
+# pytz==2021.1
+# regex==2021.4.4
+# requests
+# requests-toolbelt==0.7.0
+# rsa==4.7.2
+# six==1.15.0
+# soupsieve==2.2.1
+# sqlparse==0.4.1
+# toml==0.10.2
+# tqdm==4.60.0
+# typed-ast==1.4.2
+# typing-extensions==3.7.4.3
+# uritemplate==3.0.1
+# urllib3==1.26.4
+# webencodings==0.5.1
