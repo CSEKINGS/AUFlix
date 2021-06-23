@@ -1,4 +1,5 @@
 import googleapiclient.discovery
+from django.contrib.staticfiles.storage import staticfiles_storage
 import pprint
 import pyrebase
 import json
@@ -18,15 +19,8 @@ nltk.download('stopwords')
 class AUSCRAPER:
     def __init__(self):
         # nltk.download()
-        config = {  # Firebase configuration
-            "apiKey": "AIzaSyB2jAveBDZ6m8YBKEh1iCP2xJLLSeFoYyA",
-            "authDomain": "auflix-67633.firebaseapp.com",
-            "databaseURL": "https://auflix-67633-default-rtdb.firebaseio.com",
-            "projectId": "auflix-67633",
-            "storageBucket": "auflix-67633.appspot.com",
-            "messagingSenderId": "757795130164",
-            "appId": "1:757795130164:web:d2dd6d191911a0a7977361",
-        }
+        firebase_config = json.load(open('.'+staticfiles_storage.url("json/config.json")))
+        config = firebase_config['firebase_config']
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()  # DB initialization
         self.vurls = [

@@ -1,19 +1,13 @@
 from django.shortcuts import render,redirect
+from django.contrib.staticfiles.storage import staticfiles_storage
 from datetime import datetime
 from videopage.scrap import AUSCRAPER
 import pyrebase
+import json
 
 
-firebaseConfig = {
-  "apiKey": "AIzaSyB2jAveBDZ6m8YBKEh1iCP2xJLLSeFoYyA",
-  "authDomain": "auflix-67633.firebaseapp.com",
-  "databaseURL": "https://auflix-67633-default-rtdb.firebaseio.com",
-  "projectId": "auflix-67633",
-  "storageBucket": "auflix-67633.appspot.com",
-  "messagingSenderId": "757795130164",
-  "appId": "1:757795130164:web:d2dd6d191911a0a7977361"
-}
-firebase = pyrebase.initialize_app(firebaseConfig)
+firebase_config = json.load(open('.'+staticfiles_storage.url("json/config.json")))
+firebase = pyrebase.initialize_app(firebase_config['firebase_config'])
 authe = firebase.auth()
 db=firebase.database()
 
