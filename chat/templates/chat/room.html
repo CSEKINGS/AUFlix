@@ -13,7 +13,7 @@
     {{ room_name|json_script:"room-name" }}
     {{ request.user.username|json_script:"user_name" }}
 
-    <script src='{% static 'reconnecting-websocket.js' %}'></script>
+    <script src="{% static 'reconnecting-websocket.js' %}"></script>
     
     <script>
 

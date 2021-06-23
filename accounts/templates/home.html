@@ -5,6 +5,8 @@
 {% if request.session.userid %}
 <h1>Welcome {{request.session.name}} </h1>
 <a class='btn btn-primary' href='{% url "logout" %}'>logout</a>
+<a class='btn btn-primary' href='{% url "room" %}'>chat</a>
+
 {% else %}
 <script>
 // alert('U must Login to view your dashboard'); 
