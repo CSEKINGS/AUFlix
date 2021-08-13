@@ -1,0 +1,457 @@
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0rem;
+    background:#12181b;
+    /* background-image: linear-gradient(to top, #434343 0%, black 100%); */
+    /* background-image: url('https://wonderfulengineering.com/wp-content/uploads/2013/06/steve-jobs_1920x1080_91956.jpg'); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* color: snow; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 98vh;
+    align-items: center;
+    font-family:Sans-serif;
+}
+
+.d{
+    display: none;
+    font-weight: normal;
+    color: gray;
+}
+
+/* Scroll bar */
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #42494946;
+    border-radius: 0.5rem;
+}
+
+/* Navigation */
+
+nav{
+    background: inherit;
+    min-height: 97.5vh;
+    padding: 0.5rem;
+    width: fit-content;
+    /* box-shadow: 0px 0px 2px 0px snow; */
+    display: flex;
+    z-index:50;
+    flex-direction: column;
+    filter: drop-shadow(5px 5px 10px black);
+    transition: all 0.3s;
+}
+
+nav a{
+    align-self: center;
+    border: solid 1px #2a2e35;
+    background: #2a2e35;
+    text-decoration: none;
+    color: #1C2833;
+    font-weight: bolder;
+    width: 2.5rem;
+    height: 2.5rem;
+    /* padding: 0.5rem; */
+    box-shadow: 0px 0px 2px 0px #17202A;
+    border-radius: 0.3rem;
+    margin: auto;
+    transition: all 0.3s;
+    overflow:hidden;
+}
+
+nav a img{
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+nav a:hover{
+    transform: translateY(-10%);
+    filter: drop-shadow(5px 5px 10px black);
+}
+
+/* card list */
+
+.cont-box{
+    max-width: 85%;
+    max-height: 95vh;
+    margin: auto;
+    align-self: center;
+    overflow: hidden;
+}
+
+.cont-list{
+    width: 100%;
+    height: 95vh;
+    margin: auto;
+    align-self: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.outer-list{
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: 5vh;
+}
+
+.out-list{
+    max-width: 100%;
+    height: fit-content;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.inner-list{
+    width: max-content;
+    height: fit-content;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* margin-top: 3rem; */
+}
+
+.vcont{
+    float: left;
+    background:#2a2e35;
+    width: 17vw;
+    height: 30vh;
+    margin: 2rem;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    color: snow;
+    filter: drop-shadow(2px 2px 2px black);
+    /* transition: all 0.5s; */
+}
+
+lkey{
+    font-size: small;
+    align-items: flex-end;
+}
+key{
+    display: none;
+}
+
+.vltitle{
+    position: relative;
+    margin: auto;
+    left: 0.5rem;
+    top: 0.5rem;
+    color: snow;
+    font-size: large;
+    font-weight: bold;
+}
+
+.vcont:hover{
+    transition: 0.5s;
+    transform: translateY(-5%);
+    filter: drop-shadow(5px 5px 10px black);
+}
+
+span{
+    color: green;
+    border: solid 1px green;
+    border-radius: 0.3rem;
+    padding: 0.1rem;
+    margin: 0.1rem;
+    line-height: 1.5rem;
+    width: fit-content;
+}
+
+/* Template */
+
+.tmpl{
+    width: 100%;
+    height: 20vh;
+    background: black;
+}
+
+.tmpl img,.tmpl iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* content panel */
+
+.cont-panel{
+    max-width: 100%;
+    height: 10vh;
+    padding: 0.5rem;
+}
+
+.cont-panel .t, .cont-panel .d{
+    font-size: medium;
+    padding: 0.5vh;
+    word-wrap: break-word;
+}
+
+.cont-opt{
+    transform: scale(0.95);
+    transition: all 0.2s;
+}
+
+.vcont .cont-opt{
+    position: absolute;
+    height: 2vh;
+    width: 2vh;
+    padding: 0.5rem;
+    background: snow;
+    box-shadow: 0px 0px 10px 0px black;
+    border-radius: 100%;
+    margin: auto;
+    left: auto;
+    right: 0.2vh;
+    top: 18vh;
+    cursor: pointer;
+}
+
+/* fullscreen */
+
+.fulscrn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: row;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: snow;
+    z-index: 100;
+    transition: all 0.2s;
+}
+
+.fulscrn .cont-opt{
+    position: fixed;
+    height: 1rem;
+    width: 1rem;
+    padding: 0.5rem;
+    background: snow;
+    box-shadow: 0px 0px 10px 0px black;
+    border-radius: 100%;
+    margin: auto;
+    left:auto;
+    right: 18vw;
+    top: auto;
+    bottom: 8vh;
+    cursor: pointer;
+}
+
+.fulscrn .d{
+    display: block;
+}
+
+.cont-opt:hover{
+    transform: scale(1);
+}
+
+.fulscrn .tmpl{
+    margin: auto;
+    min-width:80vw;
+    min-height: 85vh;
+}
+
+.fulscrn .tmpl iframe{
+    border-radius: 15px;
+}
+
+.fulscrn .cont-panel{
+    margin: auto;
+    height: 80%;
+}
+
+.close{
+    display: none;
+    position: relative;
+    margin: auto;
+    left: 97%;
+    top:-47%;
+}
+
+/* search box */
+
+.hide{
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 4rem;
+    width: 0vw;
+    padding: 0rem;
+    height: 97.5vh;
+    overflow: hidden;
+    z-index: 60;
+    transition: all 0.5s;
+}
+
+.searchbox{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0%;
+    left: 4rem;
+    height: 97.5vh;
+    width: 30vw;
+    background:#2a2e35;
+    z-index: 60;
+    padding: 0.5rem;
+    overflow:hidden;
+    transition: all 0.5s;
+}
+
+.tag-list{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.tags{
+    display: block;
+    margin: 0.5rem;
+    padding: 0.3rem;
+    /* border: solid 1px #12181b; */
+    border-radius: 0.5rem;
+}
+
+.tag-title{
+    color: snow;
+    font-size: medium;
+    font-weight: bold;
+}
+
+.search{
+    position: relative;
+    margin: auto;
+    border: none;
+    outline: none;
+    border-radius: 0.5rem;
+    font-size: medium;
+    text-align: center;
+    color: snow;
+    height: 2rem;
+    width: 28vw;
+    background-color: #12181b;
+    align-self: center;
+}
+
+@media only screen and (max-width: 426px) {
+    body{
+        flex-direction: column-reverse;
+    }
+    nav{
+        min-height: fit-content;
+        min-width: fit-content;
+        flex-direction: row;
+        justify-content: center;
+        position: fixed;
+        padding: 0rem;
+        margin-bottom: 5vh;
+        background: #2a2e35;
+        border: none;
+        border-radius: 25px;
+        z-index: 100;
+    }
+    nav a{
+        border-radius: 100%;
+        margin: 0rem;
+        overflow:hidden;
+    }
+    ::-webkit-scrollbar {
+        width: 0.2rem;
+        height: 0.2rem;
+    }
+    .cont-list{
+        min-width: 100%;
+        height:100%;
+        overflow-y: auto;
+    }
+    .inner-list{
+        margin: 0rem;
+        width: max-content;
+        height: fit-content;
+        /* display: flex; */
+        /* flex-direction: column; */
+        align-items: center;
+    }
+    .vcont{
+        display: block;
+        min-width: 45vw;
+        height: 25vh;
+        margin: 0.5rem; 
+        transform: scale(1);
+    }
+    .vcont:hover{
+        transform: translateY(-1%);
+    }
+    .tmpl{
+        width: 100%;
+        height: 14vh;
+        background: black;
+    }
+    .fulscrn{
+        flex-direction: column;
+        width: 100vw;
+        height: 95vh;
+    }
+    .fulscrn .tmpl{
+        width: 100%;
+        min-height: 50vh;
+    }
+    #notes .fulscrn .tmpl{
+        width: 100%;
+        min-height: 80%;
+    }
+    .cont-panel{
+        width: 100%;
+    }
+    .vcont .cont-opt{
+        top: 14.5vh;
+    }
+    .cont-panel .t, .cont-panel .d{
+        font-size: smaller;
+    }
+    .fulscrn .cont-opt{
+        top: 0vh;
+        left: 90vw;
+    }
+    .close{
+        display: none;
+        position: relative;
+        margin: auto;
+        left: 45%;
+        top:1%;
+    }
+    .hide{
+        top: 0vw;
+        left: 0rem;
+        height: 85vh;
+    }
+    .searchbox{
+        width: 95%;
+        height: 85vh;
+        left: 0rem;
+    }
+    .search{
+        width: 95%;
+    }
+}

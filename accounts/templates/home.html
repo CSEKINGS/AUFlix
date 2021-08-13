@@ -3,9 +3,9 @@
 {% load static %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {% if request.session.userid %}
-<h1>Welcome {{request.session.name}} </h1>
-<a class='btn btn-primary' href='{% url "logout" %}'>logout</a>
-<a class='btn btn-primary' href='{% url "room" %}'>chat</a>
+<script>
+    window.location.href = '/videopage/videos';
+</script>
 
 {% else %}
 <script>

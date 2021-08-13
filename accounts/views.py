@@ -7,7 +7,6 @@ import pyrebase
 import requests
 import json
 
-
 firebase_config = json.load(open('.'+staticfiles_storage.url("json/config.json")))
 firebase = pyrebase.initialize_app(firebase_config['firebase_config'])
 authe = firebase.auth()
@@ -39,7 +38,7 @@ class Accounts:
                 except requests.HTTPError as e:
                     error_json = e.args[1]
                     return HttpResponse("<script>alert('{}!!Please ChecK your Data'); window.location.href = '/accounts/login';</script>".format(json.loads(error_json)['error']['message']))
-                return redirect('dashboard')
+                return redirect('/videopage/videos')
             elif  request.POST.get('submit') == 'signup':
                 email = request.POST.get('email')
                 password = request.POST.get('psword')
@@ -58,7 +57,7 @@ class Accounts:
                 except requests.HTTPError as e:
                     error_json = e.args[1]
                     return HttpResponse("<script>alert('{}!!Please ChecK your Data'); window.location.href = '/accounts/login';</script>".format(json.loads(error_json)['error']['message']))
-                return render(request,'accounts.html')
+                return redirect('/videopage/videos')
         return render(request,'accounts.html')
     def logout(request):
         try:

@@ -21,14 +21,16 @@
 <body>
     <nav>
         <a href="#videos"><img id="home" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
-            src="https://img.icons8.com/office/50/000000/home--v2.png" /></a>
+                src="https://img.icons8.com/office/50/000000/home--v2.png" /></a>
         <a><img id="search" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
-            src="https://img.icons8.com/officel/50/000000/search--v2.png" onclick='searchBox(this.id)' /></a>
+                src="https://img.icons8.com/officel/50/000000/search--v2.png" onclick='searchBox(this.id)' /></a>
         <a href="#notes"><img id="book" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
-            src="https://img.icons8.com/color/50/000000/open-book--v2.png" /></a>
-        <a href="#chats"><img id="chat" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
-            src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" /></a>
+                src="https://img.icons8.com/color/50/000000/open-book--v2.png" /></a>
+        <!-- <a href="#chats"><img id="chat" onmouseover="ghover(this.id)" onmouseout="gout(this.id)"
+            src="https://img.icons8.com/color/50/000000/chat--v3.png" class="chatbot" /></a> -->
     </nav>
+    <h1 style="text-align:center;line-height:0;position:absolute;top:0.5rem;color:snow;z-index:100;left:0.5rem;width:100%;">Welcome {{request.session.name}} </h1>
+    <a style="color:snow;text-decoration:none;padding:0.5rem;background:blue;border-radius:0.3rem;position:absolute;z-index:100;left:auto;right:0.5rem;top:0.5rem;" href='{% url "logout" %}'>logout</a>
     <div class="hide" id="searchbox">
         <input type="text" class="search" id="searchkey" onkeyup="searchKey();">
         <div class="tag-list">
@@ -95,31 +97,31 @@
             {% endfor %}
         </div>
         <div class="cont-list" id="notes">
-                {% for nk,nv in notes %}
-                {% for nk1,nv1 in nv.items %}
-                <div class="outer-list">
-                    <div class="vltitle">{{ nk1 }}</div>
-                    <div class="out-list">
-                        <div class="inner-list" id="cardlist">
-                            {% for a in nv1 %}
-                            <div class='vcont' id="{{ a.1 }}">
-                                <key>{{ a.2 }}</key>
-                                <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
+            {% for nk,nv in notes %}
+            {% for nk1,nv1 in nv.items %}
+            <div class="outer-list">
+                <div class="vltitle">{{ nk1 }}</div>
+                <div class="out-list">
+                    <div class="inner-list" id="cardlist">
+                        {% for a in nv1 %}
+                        <div class='vcont' id="{{ a.1 }}">
+                            <key>{{ a.2 }}</key>
+                            <img src='https://img.icons8.com/metro/26/ffffff/close-window.png' class='close'
                                 onclick='pclose("{{ a.1 }}")' />
-                                <div class='tmpl' onclick='showpdf("{{ a.1 }}")'>
-                                    <img src="https://img.icons8.com/fluent/100/000000/adobe-acrobat.png"/>
-                                </div>
-                                <div class='cont-panel' onclick='showpdf("{{ a.1 }}")'>
-                                    <div class="t">{{ a.0 }}</div>
-                                    <div class="d">{{ nk1 }}</div>
-                                </div>
+                            <div class='tmpl' onclick='showpdf("{{ a.1 }}")'>
+                                <img src="https://img.icons8.com/fluent/100/000000/adobe-acrobat.png" />
                             </div>
-                            {% endfor %}
+                            <div class='cont-panel' onclick='showpdf("{{ a.1 }}")'>
+                                <div class="t">{{ a.0 }}</div>
+                                <div class="d">{{ nk1 }}</div>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
-                {% endfor %}
+            </div>
+            {% endfor %}
+            {% endfor %}
         </div>
         <div class="cont-list" id="chats"></div>
     </div>

@@ -22,5 +22,4 @@ urlpatterns = [
     re_path(r'^$',Accounts.index,name='index'),
     re_path(r'^accounts/',include("accounts.urls")),
     re_path(r'^videopage/',include("videopage.urls")),
-    re_path(r'^chat/',include("chat.urls"))
 ]
