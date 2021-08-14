@@ -2,12 +2,21 @@ from django.shortcuts import render,redirect
 from django.contrib.staticfiles.storage import staticfiles_storage
 from datetime import datetime
 from videopage.scrap import AUSCRAPER
+from dotenv import load_dotenv
 import pyrebase
 import json
+import os
 
-
-firebase_config = json.load(open('.'+staticfiles_storage.url("json/config.json")))
-firebase = pyrebase.initialize_app(firebase_config['firebase_config'])
+load_dotenv()
+firebase = pyrebase.initialize_app({
+        "apiKey": os.environ.get("API_KEY"),
+        "authDomain": os.environ.get("AUTH_DOMAIN"),
+        "projectId": os.environ.get("PROJECTID"),
+        "storageBucket": os.environ.get("STORAGE_BUCKET"),
+        "messagingSenderId": os.environ.get("SENDERID"),
+        "appId": os.environ.get("APP_ID"),
+        "databaseURL": os.environ.get("DB_URL")
+        })
 authe = firebase.auth()
 db=firebase.database()
 
