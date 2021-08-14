@@ -27,7 +27,7 @@ SECRET_KEY = 'b+6wa*!xgnz+bx$o3z1_)r-rm2w!y80a67-cdf3u1eiv51jo!g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'auflix.herokuapp.com']
 
 
 # Application definition
