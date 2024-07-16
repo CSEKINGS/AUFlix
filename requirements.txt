@@ -14,5 +14,5 @@ typed-ast==1.4.2
 typing-extensions==3.7.4.3
 
 cryptography>=39.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
+setuptools>=70.0.0 # not directly required, pinned by Snyk to avoid a vulnerability
 sqlparse>=0.5.0 # not directly required, pinned by Snyk to avoid a vulnerability
